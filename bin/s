@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# s - Search code using Ripgrep, The Silver Searcher, The Platinum Searcher, or Ack
+# Author: Judah Caruso Rodriguez
+# Part of Open Acme Scripts
+# Requirements: rg/ag/pt/ack
+# License: MIT
+
+# Utility functions
+# -----------------
+
+function check_which() {
+	WHICH_OUT="$(which $1 2>&1 > /dev/null)"
+	if [ -z "${WHICH_OUT}" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+function check_search_output() {
+	if [ "$?" -ne 0 ]; then
+		echo "\"$@\" yielded no results"
+		exit 0
+	fi
+}
+
+function search() {
+	echo "Searching with $1..."
+	tool="$1"
+	shift
+	"$tool" "$@"
+	check_search_output $tool $@
+	exit 0
+}
+
+
+# Main body
+# ---------
+
+if [[ "$#" -eq 0 ]] ; then
+    echo 'Not enough arguments given!'
+    exit 1
+fi
+
+if check_which 'rg'; then
+	search rg --column --no-heading --color="never" "$@"
+fi
+
+if check_which 'ag'; then
+	search ag --noheading --nocolor "$@"
+fi
+
+if check_which 'pt'; then
+	search pt --nocolor "$@"
+fi
+
+if check_which 'ack'; then
+	search ack --nocolor --noheading "$@"
+fi
+
+echo 'Unable to find a valid search tool. Please install one (rg, ag, etc.) before trying again.'
+exit 1

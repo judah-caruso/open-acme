@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# commit - Automatic SCM committing
+# Author: Judah Caruso Rodriguez
+# Part of Open Acme Scripts
+# Requirements: git/mercurial, date
+# License: MIT
+
+# If no arguments are passed, use a default message.
+if [ "$#" -eq 0 ]; then
+	SIMPLE_DATE=$(date "+%s - %Y/%m/%d")
+	git commit -am "\"Commit #$SIMPLE_DATE\""
+	exit 0
+fi
+
+# Otherwise look for a valid repo and commit with the given message
+if [ -d '.git' ]; then
+	git commit -am "\"$*\""
+elif [ -d '.hg' ]; then
+	hg addremove
+	hg commit -m "\"$*\""
+else
+	echo Unable to find valid Git or Mercurial repository!
+	exit 1
+fi

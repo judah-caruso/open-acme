@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# cc - Toggle comment
+# Part of Open Acme Scripts
+# Requirements: awk
+# License: MIT
+
+COMMENT_CHARACTER='//'  # C-style comment character
+if [ "$1" ]; then
+	COMMENT_CHARACTER="$1"
+fi
+
+awk -v "comment=$COMMENT_CHARACTER" '{
+	# If a blank line is found, preserve its position and skip it.
+	if (match($0, /^[\s\t ]*$/) != 0) { print; next }
+
+	# If we find a comment, remove the comment character and whitespace.
+	# Otherwise, convert it into a comment.
+	if (match($0, "^" comment "(\\s)?") != 0) {
+		gsub("^" comment "(\\s)?", "", $0); print
+	} else {
+		gsub("^", comment " ", $0); print
+	}
+}'

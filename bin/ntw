@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# ntw - Remove trailing whitespace
+# Author: Eric Pement
+# Part of Open Acme Scripts
+# Requirements: sed (4.7)
+# License: MIT
+
+# Notice: This script has only been tested on Unix using GNU Sed 4.7.
+# If you are using a different version (or are on Mac OSX), be careful
+# as your version might not support the '\t' character.
+
+sed 's/[ \t]*$//'

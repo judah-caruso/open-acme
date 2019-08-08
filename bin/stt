@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# stt - Convert space characters to tab characters
+# Author: Judah Caruso Rodriguez
+# Part of Open Acme Scripts
+# Requirements: sed
+# License: MIT
+
+if [ "$#" -eq 0 ]; then
+    LEVEL=4
+else
+    LEVEL="$1"
+fi
+
+WHITESPACE=$(printf '%*s' "$LEVEL" "")
+sed "s/$WHITESPACE/\t/g"

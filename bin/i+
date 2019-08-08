@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# i+ - Indent blocks of text
+# Author: Judah Caruso Rodriguez
+# Part of Open Acme Scripts
+# Requirements: git/mercurial, date
+# License: MIT
+
+if [ "$#" -eq 0 ]; then
+	LEVEL=4
+else
+	LEVEL="$1"
+fi
+
+WHITESPACE=$(printf '%*s' "$LEVEL" "")
+sed "s/^/$WHITESPACE/g"
