@@ -26,6 +26,12 @@ Below is a table of the scripts found in the `bin/` directory.
 | Spaces To Tabs, Tabs To Spaces | `stt`, `tts` | Convert tab characters to space characters (and vice versa).                        | (?)`level` - How many characters to use for the corresponding search. For example, `|stt 4` will convert every `4` spaces into a tab character. `Default: 4` | `|stt`, `|tts 4`          |
 
 
+## Inspirations
+
+* [Russ Cox's - "A Tour of the Acme Editor"](https://www.youtube.com/watch?v=dP1xVpMPn8M)  
+* [Ev Bogdanov - Acme](https://github.com/evbogdanov/acme)
+
+
 ## Contribution
 
 The best way to contribute is by helping create more scripts! If you have something you'd like to share, submit a pull request and let me know! Be sure to follow the style of the other files and to include a description of what your script(s) do (preferably in the source itself).
