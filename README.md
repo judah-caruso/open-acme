@@ -13,7 +13,10 @@ If you don't already have Acme or the Plan9Port setup on your machine, follow [t
 
 ## Scripts
 
-Below is a table of the scripts found in the `bin/` directory. | Filename                       | Script Name  | Description                                                                         | Arguments (? = optional)                                                                                                                                     | Example                   |
+Below is a table of the scripts found in the `bin/` directory.  
+
+
+| Filename                       | Script Name  | Description                                                                         | Arguments (? = optional)                                                                                                                                     | Example                   |
 |--------------------------------|--------------|-------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | Commit                         | `commit`     | Automatically add and commit with Git/Mercurial.                                    | (?)`message` - A message to use for the current commit. If omitted, a commit message will be created using the current date and time.                        | `commit "initial commit"` |
 | I+, I-                         | `i+`, `i-`   | Indent and unindent blocks of text.                                                 | (?)`size` - The number of spaces to use for the indention/unindention. `Default: 4`                                                                          | `|i+ 8`, `|i- 4`          |
